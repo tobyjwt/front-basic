@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    window.raf = requestAnimationFrame(everyTime);
+
+    let lastTime = 0;
+    let count = 0;
+    function everyTime(time) {
+        console.log('cap', time - lastTime);
+        lastTime = time;
+        count++;
+        if (count < 100) {
+            requestAnimationFrame(everyTime);
+        } else {
+            // cancelAnimationFrame(window.raf);
+        }
+    }
+</script>
+</html>

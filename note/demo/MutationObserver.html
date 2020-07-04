@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #btn {
+            height: 80px;
+            width: 160px;
+            text-align: center;
+        }
+        .child {
+            height: 80px;
+            width: 160px;
+            border: 1px solid black;
+            margin: 6px;
+            padding: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div id="btn">add</div>
+    <div id="root"></div>
+</body>
+<script>
+    const root = document.querySelector('#root');
+    document.querySelector('#btn').addEventListener('click', () => {
+        const child = document.createElement('div');
+        const subChild = document.createElement('div');
+        child.appendChild(subChild);
+        child.classList.add('child');
+        root.appendChild(child);
+    });
+    const cb = (list, ob) => {
+        console.log(list, ob);
+    };
+    const observer = new MutationObserver(cb);
+    observer.observe(root, {
+        attributes: true,
+        childList: true,
+        subtree: true
+    });
+</script>
+</html>
